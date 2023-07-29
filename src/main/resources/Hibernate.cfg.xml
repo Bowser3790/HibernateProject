@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernate_db</property>
+
+        <property name="connection.username">dev_user</property>
+
+        <property name="connection.password">password</property>
+
+        <!-- The SQL types not same for the all data bases, so that specific database
+            will have specific dialect -->
+
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+        <!--
+            The different values of hbm2ddl.auto parameter are:
+
+           validate: validates the schema against the mapping files or annotations, but does not make any changes to the database schema.
+           update: updates the schema based on the mapping files or annotations, without dropping any tables or data.
+           create: creates the schema from scratch, dropping any existing tables or data.
+           create-drop: creates the schema at startup and drops it at shutdown.
+           none: disables automatic schema generation and update. -->
+
+
+
+        <property name="hbm2ddl.auto">create</property>
+        <!--  rather than update you can use create.
+        // if you use create it will create table from scratch.  If there is an existing table it will drop the existing table and create from scratch
+        // for example I already created a table and I wanted to add last name field to the table. I create the last name variable and run the code again
+        // this will drop the existing table and create table from scratch with the additional field created as well.
+        -->
+
+        <property name="show_sql">true</property>
+
+        <property name="format_sql">true</property>
+
+
+        <mapping class="hb05.uni_ManyToOne.University"/>
+        <mapping class="hb05.uni_ManyToOne.Student05"/>
+
+
+
+
+    </session-factory>
+
+
+
+
+
+
+</hibernate-configuration>
